@@ -3,13 +3,23 @@ package edu.grinnell.csc207.blockchains;
 /**
  * Blocks to be stored in blockchains.
  *
- * @author Your Name Here
+ * @author Sam Schmidt
+ * @author Princess Alexander
  * @author Samuel A. Rebelsky
  */
 public class Block {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
+  int blockNum;
+
+  Transaction blockTransaction;
+
+  Hash blockPrevHash;
+
+  Hash blockHash;
+
+  long blockNonce;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -31,7 +41,9 @@ public class Block {
    */
   public Block(int num, Transaction transaction, Hash prevHash,
       HashValidator check) {
-    // STUB
+        num = this.blockNum;
+        transaction = this.blockTransaction;
+        prevHash = this.blockPrevHash; //STUB
   } // Block(int, Transaction, Hash, HashValidator)
 
   /**
@@ -47,7 +59,7 @@ public class Block {
    *   The nonce of the block.
    */
   public Block(int num, Transaction transaction, Hash prevHash, long nonce) {
-    // STUB
+   // STUB
   } // Block(int, Transaction, Hash, long)
 
   // +---------+-----------------------------------------------------
@@ -72,7 +84,7 @@ public class Block {
    * @return the number of the block.
    */
   public int getNum() {
-    return 0;   // STUB
+    return this.blockNum;
   } // getNum()
 
   /**
@@ -81,7 +93,7 @@ public class Block {
    * @return the transaction.
    */
   public Transaction getTransaction() {
-    return new Transaction("Here", "There", 0); // STUB
+    return this.blockTransaction;
   } // getTransaction()
 
   /**
@@ -90,7 +102,7 @@ public class Block {
    * @return the nonce.
    */
   public long getNonce() {
-    return 0;   // STUB
+    return this.blockNonce;
   } // getNonce()
 
   /**
@@ -99,7 +111,7 @@ public class Block {
    * @return the hash of the previous block.
    */
   Hash getPrevHash() {
-    return new Hash(new byte[] {0});  // STUB
+    return this.blockPrevHash;
   } // getPrevHash
 
   /**
@@ -117,6 +129,7 @@ public class Block {
    * @return a string representation of the block.
    */
   public String toString() {
-    return "";  // STUB
+    return String.format("Block %d (Transaction: [%s], Nonce: %s, prevHash %h, hash %h", 
+    this.blockNum, blockTransaction.toString(), String.valueOf(blockNonce), blockPrevHash, blockHash);
   } // toString()
 } // class Block
