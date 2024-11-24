@@ -8,7 +8,10 @@ package edu.grinnell.csc207.blockchains;
  * The hash is computed by including the block number, transaction, previous hash, and nonce.
  * The nonce is determined by mining, using a provided validator to check validity.
  * 
- * @author 
+ * @author Samantha Schmidt
+ * @author Princess Alexander
+ * @author Samuel Rebelsky
+ * 
  */
 public class Block {
   // +--------+------------------------------------------------------
