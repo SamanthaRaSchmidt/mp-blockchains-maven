@@ -3,13 +3,18 @@ package edu.grinnell.csc207.blockchains;
 /**
  * Encapsulated hashes.
  *
- * @author Your Name Here
+ * @author Princess Alexander
  * @author Samuel A. Rebelsky
  */
 public class Hash {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
+
+  /**
+   * The data stored in this hash.
+   */
+  private final byte[] data;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -18,11 +23,13 @@ public class Hash {
   /**
    * Create a new encapsulated hash.
    *
-   * @param data
-   *   The data to copy into the hash.
+   * @param data The data to copy into the hash.
    */
   public Hash(byte[] data) {
-    // STUB
+    if (data == null) {
+      throw new IllegalArgumentException("Hash data cannot be null.");
+    } // if
+    this.data = data.clone();
   } // Hash(byte[])
 
   // +---------+-----------------------------------------------------
@@ -35,30 +42,30 @@ public class Hash {
    * @return the number of bytes in the hash.
    */
   public int length() {
-    return 0;   // STUB
+    return this.data.length;
   } // length()
 
   /**
    * Get the ith byte.
    *
-   * @param i
-   *   The index of the byte to get, between 0 (inclusive) and
-   *   length() (exclusive).
-   *
-   * @return the ith byte
+   * @param i The index of the byte to get, between 0 (inclusive) and length() (exclusive).
+   * @return the ith byte.
+   * @throws IndexOutOfBoundsException if the index is out of range.
    */
   public byte get(int i) {
-    return 0;   // STUB
-  } // get()
+    if (i < 0 || i >= this.data.length) {
+      throw new IndexOutOfBoundsException("Index " + i + " is out of range.");
+    } // if
+    return this.data[i];
+  } // get(int)
 
   /**
-   * Get a copy of the bytes in the hash. We make a copy so that the client
-   * cannot change them.
+   * Get a copy of the bytes in the hash.
    *
    * @return a copy of the bytes in the hash.
    */
   public byte[] getBytes() {
-    return new byte[] {1, 2, 3, 4, 5};      // STUB
+    return this.data.clone();
   } // getBytes()
 
   /**
@@ -67,20 +74,29 @@ public class Hash {
    * @return the hash as a hex string.
    */
   public String toString() {
-    return "";          // STUB
+    StringBuilder hexString = new StringBuilder();
+    for (byte b : this.data) { // for
+      hexString.append(String.format("%02x", b));
+    } // for
+    return hexString.toString();
   } // toString()
 
   /**
    * Determine if this is equal to another object.
    *
-   * @param other
-   *   The object to compare to.
-   *
-   * @return true if the two objects are conceptually equal and false
-   *   otherwise.
+   * @param other The object to compare to.
+   * @return true if the two objects are conceptually equal and false otherwise.
    */
+  @Override
   public boolean equals(Object other) {
-    return false;       // STUB
+    if (this == other) {
+      return true;
+    } // if
+    if (other == null || getClass() != other.getClass()) {
+      return false;
+    } // if
+    Hash otherHash = (Hash) other;
+    return java.util.Arrays.equals(this.data, otherHash.data);
   } // equals(Object)
 
   /**
@@ -88,7 +104,8 @@ public class Hash {
    *
    * @return the hash code.
    */
+  @Override
   public int hashCode() {
-    return this.toString().hashCode();
+    return java.util.Arrays.hashCode(this.data);
   } // hashCode()
 } // class Hash
