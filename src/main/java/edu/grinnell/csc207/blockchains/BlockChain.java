@@ -67,7 +67,7 @@ public class BlockChain implements Iterable<Transaction> {
   } // mine(Transaction)
 
   /**
-   * Get the number of blocks curently in the chain.
+   * Get the number of blocks currently in the chain.
    *
    * @return the number of blocks in the chain, including the initial block.
    */
@@ -86,7 +86,7 @@ public class BlockChain implements Iterable<Transaction> {
    *   hash is incorrect.
    */
   public void append(Block blk) {
-    last = blk;
+    last = blk; //STUB
   } // append()
 
   /**
@@ -97,13 +97,17 @@ public class BlockChain implements Iterable<Transaction> {
    *   is removed).
    */
   public boolean removeLast() {
-    return true;        // STUB
+    if (size == 1) {
+      return false;
+    } else {
+      return true;        // STUB
+    } //endif
   } // removeLast()
 
   /**
    * Get the hash of the last block in the chain.
    *
-   * @return the hash of the last sblock in the chain.
+   * @return the hash of the last block in the chain.
    */
   public Hash getHash() {
     return last.hash;
