@@ -3,43 +3,13 @@ package edu.grinnell.csc207.blockchains;
 /**
  * Blocks to be stored in blockchains.
  *
- * Each block contains a block number, a transaction, the hash of the previous block, a nonce,
- * and its own hash.
- * The hash is computed by including the block number, transaction, previous hash, and nonce.
- * The nonce is determined by mining, using a provided validator to check validity.
- * 
- * @author Princess Alexander, 
+ * @author Your Name Here
  * @author Samuel A. Rebelsky
  */
 public class Block {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
-
-  /**
-   * The number of this block in the blockchain.
-   */
-  private final int num;
-
-  /**
-   * The transaction data stored in this block.
-   */
-  private final Transaction transaction;
-
-  /**
-   * The hash of the previous block in the chain.
-   */
-  private final Hash prevHash;
-
-  /**
-   * The nonce, determined by mining, for this block.
-   */
-  private final long nonce;
-
-  /**
-   * The hash of this block, computed using its fields.
-   */
-  private final Hash hash;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -54,20 +24,9 @@ public class Block {
    * @param prevHash    The hash of the previous block.
    * @param check       The validator used to check the block.
    */
-  public Block(int num, Transaction transaction, Hash prevHash, HashValidator check) {
-    this.num = num;
-    this.transaction = transaction;
-    this.prevHash = prevHash;
-    long tempNonce = 0L;
-
-    Hash tempHash;
-    do { // while
-      tempNonce++;
-      tempHash = computeHash(this.num, this.transaction, this.prevHash, tempNonce);
-    } while (!check.isValid(tempHash)); // while
-
-    this.nonce = tempNonce;
-    this.hash = tempHash;
+  public Block(int num, Transaction transaction, Hash prevHash,
+      HashValidator check) {
+    // STUB
   } // Block(int, Transaction, Hash, HashValidator)
 
   /**
@@ -79,11 +38,7 @@ public class Block {
    * @param nonce       The nonce of the block.
    */
   public Block(int num, Transaction transaction, Hash prevHash, long nonce) {
-    this.num = num;
-    this.transaction = transaction;
-    this.prevHash = prevHash;
-    this.nonce = nonce;
-    this.hash = computeHash(this.num, this.transaction, this.prevHash, this.nonce);
+    // STUB
   } // Block(int, Transaction, Hash, long)
 
   // +---------+-----------------------------------------------------
@@ -99,10 +54,9 @@ public class Block {
    * @param nonce       The nonce for the block.
    * @return The computed hash for the block.
    */
-  private static Hash computeHash(int num, Transaction transaction, Hash prevHash, long nonce) {
-    String data = num + transaction.toString() + prevHash.toString() + nonce;
-    return new Hash(data.getBytes(java.nio.charset.StandardCharsets.UTF_8));
-  } // computeHash(int, Transaction, Hash, long)
+  static void computeHash() {
+    // STUB
+  } // computeHash()
 
   // +---------+-----------------------------------------------------
   // | Methods |
@@ -114,7 +68,7 @@ public class Block {
    * @return the number of the block.
    */
   public int getNum() {
-    return this.num;
+    return 0;   // STUB
   } // getNum()
 
   /**
@@ -123,7 +77,7 @@ public class Block {
    * @return the transaction.
    */
   public Transaction getTransaction() {
-    return this.transaction;
+    return new Transaction("Here", "There", 0); // STUB
   } // getTransaction()
 
   /**
@@ -132,7 +86,7 @@ public class Block {
    * @return the nonce.
    */
   public long getNonce() {
-    return this.nonce;
+    return 0;   // STUB
   } // getNonce()
 
   /**
@@ -140,9 +94,9 @@ public class Block {
    *
    * @return the hash of the previous block.
    */
-  public Hash getPrevHash() {
-    return this.prevHash;
-  } // getPrevHash()
+  Hash getPrevHash() {
+    return new Hash(new byte[] {0});  // STUB
+  } // getPrevHash
 
   /**
    * Get the hash of the current block.
@@ -160,9 +114,6 @@ public class Block {
    */
   @Override
   public String toString() {
-    return "Block #" + this.num
-        + ", Transaction: " + this.transaction
-        + ", Nonce: " + this.nonce
-        + ", Hash: " + this.hash.toString();
+    return "";  // STUB
   } // toString()
 } // class Block
