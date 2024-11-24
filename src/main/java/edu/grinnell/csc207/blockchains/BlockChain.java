@@ -6,12 +6,28 @@ import java.util.NoSuchElementException;
 /**
  * A full blockchain.
  *
- * @author Your Name Here
+ * @author Sam Schmidt
+ * @author Princess Alexander
  */
 public class BlockChain implements Iterable<Transaction> {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
+
+  /**
+   * The first block in the blockchain.
+   */
+  Block first;
+
+  /**
+   * The last block in the blockchain.
+   */
+  Block last;
+
+  /**
+   * The number of blocks within the blockchain.
+   */
+  int size;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -24,7 +40,8 @@ public class BlockChain implements Iterable<Transaction> {
    *   The validator used to check elements.
    */
   public BlockChain(HashValidator check) {
-    // STUB
+    first = new Block(0, new Transaction("", "", 0), new Hash(new byte[] {}), check);
+    size = 1;
   } // BlockChain(HashValidator)
 
   // +---------+-----------------------------------------------------
@@ -45,7 +62,8 @@ public class BlockChain implements Iterable<Transaction> {
    * @return a new block with correct number, hashes, and such.
    */
   public Block mine(Transaction t) {
-    return new Block(10, t, new Hash(new byte[] {7}), 11);       // STUB
+
+    return first; // STUB
   } // mine(Transaction)
 
   /**
@@ -54,7 +72,7 @@ public class BlockChain implements Iterable<Transaction> {
    * @return the number of blocks in the chain, including the initial block.
    */
   public int getSize() {
-    return 2;   // STUB
+    return this.size;
   } // getSize()
 
   /**
@@ -68,7 +86,7 @@ public class BlockChain implements Iterable<Transaction> {
    *   hash is incorrect.
    */
   public void append(Block blk) {
-    // STUB
+    last = blk;
   } // append()
 
   /**
@@ -88,7 +106,7 @@ public class BlockChain implements Iterable<Transaction> {
    * @return the hash of the last sblock in the chain.
    */
   public Hash getHash() {
-    return new Hash(new byte[] {2, 0, 7});   // STUB
+    return last.hash;
   } // getHash()
 
   /**
