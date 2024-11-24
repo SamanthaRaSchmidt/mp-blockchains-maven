@@ -7,11 +7,11 @@ package edu.grinnell.csc207.blockchains;
  * and its own hash.
  * The hash is computed by including the block number, transaction, previous hash, and nonce.
  * The nonce is determined by mining, using a provided validator to check validity.
- * 
+ *
  * @author Samantha Schmidt
  * @author Princess Alexander
  * @author Samuel Rebelsky
- * 
+ *
  */
 public class Block {
   // +--------+------------------------------------------------------
@@ -21,27 +21,27 @@ public class Block {
   /**
    * The number of this block in the blockchain.
    */
-  private final int num;
+  private int num;
 
   /**
    * The transaction data stored in this block.
    */
-  private final Transaction transaction;
+  private Transaction transaction;
 
   /**
    * The hash of the previous block in the chain.
    */
-  private final Hash prevHash;
+  private Hash prevHash;
 
   /**
    * The nonce, determined by mining, for this block.
    */
-  private final long nonce;
+  private long nonce;
 
   /**
    * The hash of this block, computed using its fields.
    */
-  private final Hash hash;
+  private Hash hash;
 
   // +--------------+------------------------------------------------
   // | Constructors |
