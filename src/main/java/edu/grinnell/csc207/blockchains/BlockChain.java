@@ -6,14 +6,8 @@ import java.util.NoSuchElementException;
 /**
  * A full blockchain.
  *
-<<<<<<< HEAD
- * @author Samantha Schmidt
- * @author Princess Alexander
- *
-=======
  * @author Sam Schmidt
  * @author Princess Alexander
->>>>>>> 17375d9579103677749f5ea7cf748d309a239394
  */
 public class BlockChain implements Iterable<Transaction> {
   // +--------+------------------------------------------------------
@@ -78,7 +72,7 @@ public class BlockChain implements Iterable<Transaction> {
    * @return the number of blocks in the chain, including the initial block.
    */
   public int getSize() {
-    return this.size;
+    return this.size; // STUB
   } // getSize()
 
   /**
@@ -116,7 +110,7 @@ public class BlockChain implements Iterable<Transaction> {
    * @return the hash of the last block in the chain.
    */
   public Hash getHash() {
-    return last.hash;
+    return last.hash; //STUB
   } // getHash()
 
   /**
