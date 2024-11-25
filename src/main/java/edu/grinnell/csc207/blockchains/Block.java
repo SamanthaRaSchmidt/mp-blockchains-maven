@@ -21,27 +21,27 @@ public class Block {
   /**
    * The number of this block in the blockchain.
    */
-  public int num;
+  int num;
 
   /**
    * The transaction data stored in this block.
    */
-  public Transaction transaction;
+  Transaction transaction;
 
   /**
    * The hash of the previous block in the chain.
    */
-  public Hash prevHash;
+  Hash prevHash;
 
   /**
    * The nonce, determined by mining, for this block.
    */
-  public long nonce;
+  long nonce;
 
   /**
    * The hash of this block, computed using its fields.
    */
-  public Hash hash;
+  Hash hash;
 
   // +--------------+------------------------------------------------
   // | Constructors |
