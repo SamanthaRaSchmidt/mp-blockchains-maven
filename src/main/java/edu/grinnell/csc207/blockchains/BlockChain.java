@@ -17,12 +17,12 @@ public class BlockChain implements Iterable<Transaction> {
   /**
    * The first block in the blockchain.
    */
-  Block first;
+  Node first;
 
   /**
    * The last block in the blockchain.
    */
-  Block last;
+  Node last;
 
   /**
    * The number of blocks within the blockchain.
@@ -40,7 +40,7 @@ public class BlockChain implements Iterable<Transaction> {
    *   The validator used to check elements.
    */
   public BlockChain(HashValidator check) {
-    first = new Block(0, new Transaction("", "", 0), new Hash(new byte[] {}), check);
+    first = new Node(new Block(0, new Transaction("", "", 0), new Hash(new byte[] {}), check));
     size = 1;
   } // BlockChain(HashValidator)
 
@@ -63,7 +63,7 @@ public class BlockChain implements Iterable<Transaction> {
    */
   public Block mine(Transaction t) {
 
-    return first; // STUB
+    return first.blk; // STUB
   } // mine(Transaction)
 
   /**
@@ -100,6 +100,7 @@ public class BlockChain implements Iterable<Transaction> {
     if (size == 1) {
       return false;
     } else {
+      last.remove();
       return true;        // STUB
     } //endif
   } // removeLast()
@@ -110,7 +111,7 @@ public class BlockChain implements Iterable<Transaction> {
    * @return the hash of the last block in the chain.
    */
   public Hash getHash() {
-    return last.hash; //STUB
+    return last.blk.hash; //STUB
   } // getHash()
 
   /**
