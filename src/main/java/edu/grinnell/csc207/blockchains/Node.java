@@ -5,7 +5,7 @@ package edu.grinnell.csc207.blockchains;
  * 
  * @author Sam Schmidt
  */
-public class Node<Block> {
+public class Node {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
@@ -13,7 +13,7 @@ public class Node<Block> {
   /**
    * The previous node.
    */
-  Node<Block> prev;
+  Node prev;
 
   /**
    * The stored block.
@@ -23,7 +23,7 @@ public class Node<Block> {
   /**
    * The next node.
    */
-  Node<Block> next;
+  Node next;
 
 
   // +--------------+------------------------------------------------
@@ -40,11 +40,11 @@ public class Node<Block> {
    * @param nextNode
    *   The next node in the list (or null, if it's the end of the list).
    */
-  public Node(Node<Block> prevNode, Block val, Node<Block> nextNode) {
+  public Node(Node prevNode, Block val, Node nextNode) {
     this.prev = prevNode;
     this.blk = val;
     this.next = nextNode;
-  } // Node(Node<Block>, Block, Node<Block>)
+  } // Node(Node, Block, Node)
 
   /**
    * Create a new node with no previous link (e.g., the front
@@ -55,9 +55,9 @@ public class Node<Block> {
    * @param nextNode
    *   The next node in the list (or null, if it's the end of the list).
    */
-  public Node(Block val, Node<Block> nextNode) {
+  public Node(Block val, Node nextNode) {
     this(null, val, nextNode);
-  } // Node(Block, Node<Block>)
+  } // Node(Block, Node)
 
   /**
    * Create a new node with no next link (e.g., if it's at the end of
@@ -68,9 +68,9 @@ public class Node<Block> {
    * @param val
    *   The value to be stored in the node.
    */
-  public Node(Node<Block> prevNode, Block val) {
+  public Node(Node prevNode, Block val) {
     this(prevNode, val, null);
-  } // Node(Node<Block>, Block)
+  } // Node(Node, Block)
 
   /**
    * Create a new node with no links.
@@ -94,8 +94,8 @@ public class Node<Block> {
    * @return
    *   The newly created node that contains the value.
    */
-  Node<Block> insertAfter(Block val) {
-    Node<Block> tmp = new Node<Block>(this, val, this.next);
+  Node insertAfter(Block val) {
+    Node tmp = new Node(this, val, this.next);
     if (this.next != null) {
       this.next.prev = tmp;
     } // if
@@ -111,8 +111,8 @@ public class Node<Block> {
    * @return
    *   The newly created node that contains the value.
    */
-  Node<Block> insertBefore(Block val) {
-    Node<Block> tmp = new Node<Block>(this.prev, val, this);
+  Node insertBefore(Block val) {
+    Node tmp = new Node(this.prev, val, this);
     if (this.prev != null) {
       this.prev.next = tmp;
     } // if
