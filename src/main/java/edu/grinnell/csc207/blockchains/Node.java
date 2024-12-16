@@ -2,7 +2,7 @@ package edu.grinnell.csc207.blockchains;
 
 /**
  * Creates nodes.
- * 
+ *
  * @author Sam Schmidt
  */
 public class Node {

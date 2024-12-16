@@ -86,7 +86,7 @@ public class BlockChain implements Iterable<Transaction> {
    *   hash is incorrect.
    */
   public void append(Block blk) {
-    last = blk; //STUB
+    // last = blk; //STUB
   } // append()
 
   /**
