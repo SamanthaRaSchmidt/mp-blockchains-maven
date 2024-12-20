@@ -14,6 +14,7 @@ import edu.grinnell.csc207.util.IOUtils;
  * A simple UI for our BlockChain class.
  *
  * @author Princess Alexander
+ * @author Samantha Schmidt
  * @author Samuel A. Rebelsky
  */
 public class BlockChainUI {

@@ -73,13 +73,14 @@ public class Hash {
    *
    * @return the hash as a hex string.
    */
+  @Override
   public String toString() {
     StringBuilder hexString = new StringBuilder();
-    for (byte b : this.data) { // for
-      hexString.append(String.format("%02x", b));
+    for (byte b : this.data) {
+      hexString.append(String.format("%02X", b)); // Uppercase hexadecimal
     } // for
     return hexString.toString();
-  } // toString()
+  } //toString
 
   /**
    * Determine if this is equal to another object.
