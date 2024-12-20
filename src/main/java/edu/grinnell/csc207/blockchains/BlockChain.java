@@ -11,7 +11,6 @@ import java.util.NoSuchElementException;
  *
  * @author Samuel A. Rebelsky
  * @author Princess Alexander
- * @author Samantha Schmidt
  *
  */
 public class BlockChain implements Iterable<Transaction> {
@@ -185,11 +184,11 @@ public class BlockChain implements Iterable<Transaction> {
     return tail.block.getHash();
   } // getHash()
 
-/**
- * Validate the blockchain.
- *
- * @return true if the blockchain is valid; false otherwise.
- */
+  /**
+   * Validate the blockchain.
+   *
+   * @return true if the blockchain is valid; false otherwise.
+   */
   public boolean isCorrect() {
     Node current = head;
     java.util.Map<String, Integer> balances = new java.util.HashMap<>();
@@ -240,7 +239,6 @@ public class BlockChain implements Iterable<Transaction> {
 
     return true; // Blockchain is valid
   } // isCorrect()
-
 
   /**
    * Check if the blockchain is correct. Throws an exception if not.
